@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent?key=${apiKey}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
     return Response.json({
       success: true,
       analysis: parsed,
-      model: "gemini-2.0-flash",
+      model: "gemini-flash-lite-latest",
     });
   } catch (err) {
     return Response.json(
