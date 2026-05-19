@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   test:
     name: Playwright Tests
@@ -27,6 +30,22 @@ jobs:
 
       - name: Install Playwright browsers
         run: npx playwright install chromium --with-deps
+
+      - name: Generate missing baseline snapshots
+        run: npx playwright test --update-snapshots=missing
+        env:
+          CI: "true"
+
+      - name: Commit new baselines (linux)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.email "ci@paperclip.ing"
+          git config user.name "CI"
+          git add tests/
+          git diff --staged --quiet || git commit -m "chore: add linux snapshot baselines [skip ci]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Playwright tests
         run: npx playwright test

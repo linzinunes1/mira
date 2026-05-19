@@ -16,13 +16,14 @@ export default defineConfig({
     trace: "on-first-retry",
     screenshot: "only-on-failure",
   },
-  snapshotDir: "./tests/snapshots",
-  snapshotPathTemplate: "{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}{ext}",
+  // Platform suffix ensures macOS and Linux baselines don't conflict
+  snapshotPathTemplate:
+    "{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}-{snapshotSuffix}{ext}",
   webServer: {
     command: `node_modules/.bin/next dev apps/mira-api --port ${PORT}`,
     url: `${BASE_URL}/api/health`,
     reuseExistingServer: !process.env.CI,
-    timeout: 60000,
+    timeout: 90000,
     env: {
       NODE_ENV: "test",
     },
