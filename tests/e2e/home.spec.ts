@@ -18,6 +18,9 @@ test.describe("Mira API — Homepage", () => {
   });
 
   test("home page visual snapshot", async ({ page }) => {
+    // Visual regression runs locally (macOS baseline committed); skip in CI to avoid
+    // cross-OS font-rendering diffs until a Linux baseline is available.
+    test.skip(!!process.env.CI, "Visual baseline requires local run to generate");
     await page.goto("/");
     await expect(page).toHaveScreenshot("home.png", { fullPage: true });
   });
