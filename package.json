@@ -1,0 +1,17 @@
+{
+  "name": "mira",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Mira monorepo — mobile app + API backend",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:app": "yarn workspace mira-app start",
+    "dev:api": "yarn workspace mira-api dev",
+    "build:api": "yarn workspace mira-api build"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
