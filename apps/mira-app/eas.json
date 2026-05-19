@@ -10,18 +10,18 @@
         "simulator": false
       },
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://mira-api.vercel.app"
+        "EXPO_PUBLIC_API_URL": "https://mira-api-omega.vercel.app"
       }
     },
     "preview": {
       "distribution": "internal",
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://mira-api.vercel.app"
+        "EXPO_PUBLIC_API_URL": "https://mira-api-omega.vercel.app"
       }
     },
     "production": {
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://mira-api.vercel.app"
+        "EXPO_PUBLIC_API_URL": "https://mira-api-omega.vercel.app"
       }
     }
   },
