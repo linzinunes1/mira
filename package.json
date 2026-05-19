@@ -9,7 +9,12 @@
   "scripts": {
     "dev:app": "yarn workspace mira-app start",
     "dev:api": "yarn workspace mira-api dev",
-    "build:api": "yarn workspace mira-api build"
+    "build:api": "yarn workspace mira-api build",
+    "test": "playwright test",
+    "test:update-snapshots": "playwright test --update-snapshots"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0"
   },
   "engines": {
     "node": ">=20"
